@@ -10,17 +10,17 @@ import java.util.HashMap;
 import java.util.List;
 
 @Service
-public class OptimizationService {
+public class OptimisationService {
     public List<List<String>> findOutput(MultipartFile codeInput) throws Exception{
         InputStream is = codeInput.getInputStream();
 
         //use library and pass input stream
-        //obtain the optimizations
-        List<List<String>> optimizations = Arrays.asList(
+        //obtain the optimisations
+        List<List<String>> optimisations = Arrays.asList(
                 Arrays.asList("3","if(i==0){","5"),
                 Arrays.asList("9","const temp = 5;","9")
         );
 
-        return optimizations;
+        return optimisations;
     }
 }
