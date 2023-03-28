@@ -10,6 +10,7 @@ import java.util.List;
 
 @RequestMapping("api/")
 @RestController
+@CrossOrigin(origins = "*")
 public class CodeInputController {
     private final DependencyService dependencyService;
     private final OptimizationService optimizationService;
