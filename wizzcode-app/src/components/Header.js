@@ -12,9 +12,9 @@ export const Header = () => {
  
       <Navbar expand="md" >
         <Container>
-          <Navbar.Brand href="/">
-            <h1>WizzCode</h1>
-          </Navbar.Brand>
+       
+            <h1 class="navbar-logo">WizzCode</h1>
+          
 
         </Container>
       </Navbar>
