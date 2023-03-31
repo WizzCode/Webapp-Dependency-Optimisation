@@ -4,6 +4,8 @@ import headerImg from "./assets/img/header-img.svg";
 import { ArrowRightCircle } from 'react-bootstrap-icons';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
+import FileUploadButton from "./FileUploadButton";
+import Button from "./Button";
 
 export const Banner = () => {
   const [loopNum, setLoopNum] = useState(0);
@@ -49,29 +51,38 @@ export const Banner = () => {
 
   return (
     <section className="banner" id="home">
-      <Container>
+      <Container class="w-25">
         <Row className="aligh-items-center">
           <Col xs={12} md={6} xl={7}>
             <TrackVisibility>
               {({ isVisible }) =>
               <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
-                <span className="tagline">Let's Start Analysing</span>
+                <span className="tagline">Let's Start Analysing </span>
                 <h1> <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Optimisation", "Dependency Graph", "Code Analysis" ]'><span className="wrap">{text}</span></span></h1>
-                  
-                  
+             
               </div>}
             </TrackVisibility>
+            <div className="Card">
+          <FileUploadButton />
+        </div>
+        <div className="Card">
+          <Button />
+        </div>
           </Col>
           <Col xs={12} md={6} xl={5}>
-            {/* <TrackVisibility>
+            <TrackVisibility>
               {({ isVisible }) =>
                 <div className={isVisible ? "animate__animated animate__zoomIn" : ""}>
-                  <img src={headerImg} alt="Header Img "/>
+                  <img class ="image-svg" src={headerImg} alt="Header Img "/>
                 </div>}
-            </TrackVisibility> */}
+            </TrackVisibility>
           </Col>
         </Row>
+       
       </Container>
+      
     </section>
+      
+    
   )
 }

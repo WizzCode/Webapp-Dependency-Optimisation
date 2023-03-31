@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import axios from "axios";
 
+
+
+
+
 class FileUploadButton extends Component {
 
     // API Endpoints
@@ -50,19 +54,20 @@ class FileUploadButton extends Component {
         }
     }
 
-
+    
     // render from here
     render() { 
         return (
             <div>
                
                 {/*input field */}
-                <input
+                <input class="choosefile"
                     type="file"
                     onChange={this.handleFile}
                 />
                 <label>Upload file</label>
-                <input type="submit" onClick={this.handleSubmitFile} value="Submit"/>
+                <input class="uploadbutton" type="submit" onClick={this.handleSubmitFile} value="Upload"/>
+                
             </div>
         );
     }

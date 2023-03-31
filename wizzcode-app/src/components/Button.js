@@ -1,9 +1,20 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import About from './About';
+import { useNavigate } from "react-router-dom";
 
 function Button() {
-  
+    const navigate = useNavigate();
+
+    const navigateToOptimiser = () => {
+    
+      navigate('/optimiser');
+    };
+
+    return (
+        <div>
+          
+          <button style={{color: "red"}} onClick={navigateToOptimiser}>Optimisation Button</button>
+        </div>
+      );
 }
 
 export default Button;
