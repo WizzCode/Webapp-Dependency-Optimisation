@@ -1,0 +1,41 @@
+.main-container{
+    padding: 0 1.5%;
+    margin-bottom: 5%;
+}
+
+/* Optimisation Section */
+.optimisation-list-container{
+    height: 100vh;
+    margin: 5% 0% 5% 0%;
+    background-color: #161b22;
+}
+
+/* Code Display Section */
+.code-container{
+    height: 100vh;
+    margin: 5% 0% 5% 0%;
+    background-color: #161b22;
+    display: flex;
+    flex-direction: column;
+}
+
+.inner-code-container-1{
+    margin: 2% 2%;
+    flex-basis: 5%;
+}
+
+#select-theme{
+    margin:0;
+    height: 100%;
+    width: 20%;
+}
+.copy-btn{
+    margin-bottom: 0%;
+    float: right;
+}
+.syntax-highlighter{
+    flex-basis: 95%;
+    margin: 2% 2%;
+    overflow: scroll;
+    scroll-behavior: smooth;
+}
