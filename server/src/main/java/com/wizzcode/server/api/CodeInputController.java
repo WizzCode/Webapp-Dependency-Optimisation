@@ -27,7 +27,7 @@ public class CodeInputController {
     }
 
     @RequestMapping(value = "optimisation", method = { RequestMethod.GET, RequestMethod.POST })
-    public List<List<String>> optimisation(@RequestBody MultipartFile codeInput) throws Exception{
+    public String optimisation(@RequestBody MultipartFile codeInput) throws Exception{
         return optimisationService.findOutput(codeInput);
     }
 }

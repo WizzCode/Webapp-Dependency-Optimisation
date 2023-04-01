@@ -8,7 +8,7 @@ import axios from "axios";
 class FileUploadButton extends Component {
 
     // API Endpoints
-    custom_file_upload_url = `http://localhost:8080/api/optimization`;
+    custom_file_upload_url = `http://127.0.0.1:8080/api/optimisation`;
     
     constructor(props) {
         super(props);
@@ -47,6 +47,8 @@ class FileUploadButton extends Component {
             )
             .then(res => {
                 console.log(`Success` + res.data);
+                console.log(typeof(res.data));
+                console.log(JSON.parse(JSON.stringify(res.data)))
             })
             .catch(err => {
                 console.log(err);
