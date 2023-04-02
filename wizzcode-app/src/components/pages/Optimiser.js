@@ -24,25 +24,42 @@ function Optimiser() {
   useEffect(() => {
     console.log(`Opt Resp updated`);
     setOptimisations(optimisationResponse);
-    },[optimisationResponse]);
+  }, [optimisationResponse]);
+
+  const accordionItem = (key, item) => {
+    return(
+      <>
+        <Accordion.Item eventKey={key}>
+          <Accordion.Header>{item.lineNo}</Accordion.Header>
+          <Accordion.Body>
+            <p>{item.justificationKey}</p>
+            <p>{item.snippet}</p>
+          </Accordion.Body>
+        </Accordion.Item>
+      </>
+    )
+  };
 
   return (
     <Row className="main-container">
       <Col md={6}>
         <div className="optimisation-list-container rounded-4">
           <Accordion className="accordion">
-            <Accordion.Item eventKey="0">
-              <Accordion.Header>Accordion Item #1</Accordion.Header>
-              <Accordion.Body>
-                Accordion body
-              </Accordion.Body>
-            </Accordion.Item>
-            <Accordion.Item eventKey="1">
-              <Accordion.Header>Accordion Item #2</Accordion.Header>
-              <Accordion.Body>
-                Accordion body
-              </Accordion.Body>
-            </Accordion.Item>
+            {
+              (optimisations !== null) 
+              ?
+              <>
+                {
+                  Object.entries(optimisations).map(([key, item]) => {
+                    return(
+                    accordionItem(key, item)
+                    );
+                  })
+                }
+              </> 
+              :
+              <p className="p-3">No Optimisations to display!</p>
+            }
           </Accordion>
         </div>
       </Col>

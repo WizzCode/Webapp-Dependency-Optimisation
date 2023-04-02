@@ -8,16 +8,22 @@
     height: 100vh;
     margin: 5% 0% 5% 0%;
     background-color: #161b22;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
 }
 
 /* Accordion Section */
 .accordion-item, .accordion-body, .accordion-header, .accordion-item button, .accordion-item button:not(.collapsed) {
-    background-color: #000000;
+    background-color: #161b22;
     color:#fff;
 }
 
 .accordion-item{
-    border-color: #161b22 !important;
+    border-color: #000000 !important;
+}
+
+.accordion-item button{
+    box-shadow: #fff !important;
 }
 
 /* Code Display Section */
