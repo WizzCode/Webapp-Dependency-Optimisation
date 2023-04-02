@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import axios from "axios";
 
-
-
-
+import { Context } from './ContextFile';
 
 class FileUploadButton extends Component {
+
+    static contextType = Context;
 
     // API Endpoints
     custom_file_upload_url = `http://127.0.0.1:8080/api/optimisation`;
@@ -48,7 +48,8 @@ class FileUploadButton extends Component {
             .then(res => {
                 console.log(`Success` + res.data);
                 console.log(typeof(res.data));
-                console.log(JSON.parse(JSON.stringify(res.data)))
+                const result = JSON.parse(JSON.stringify(res.data));
+                this.context.setOptimisationResponse(result);
             })
             .catch(err => {
                 console.log(err);

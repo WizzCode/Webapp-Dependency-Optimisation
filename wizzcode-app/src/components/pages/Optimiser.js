@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import SyntaxHighlighter from "react-syntax-highlighter";
 import * as themes from "react-syntax-highlighter/dist/esm/styles/hljs";
 import CopyToClipboard from 'react-copy-to-clipboard';
@@ -11,11 +11,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import './Optimiser.css'
 
+import { Context } from '../ContextFile';
+
 function Optimiser() {
   const [text, setText] = useState('import com.wizzcode.server; \n\n@SpringBootApplication \nclass Application{ \npublic static void main(String args[]){');
   const defaultLanguage = 'java'
   const defaultTheme = 'agate'
   const [theme, setTheme] = useState(defaultTheme)
+  const [optimisations, setOptimisations] = useState(null);
+  const { optimisationResponse } = useContext(Context);
+
+  useEffect(() => {
+    console.log(`Opt Resp updated`);
+    setOptimisations(optimisationResponse);
+    },[optimisationResponse]);
 
   return (
     <Row className="main-container">

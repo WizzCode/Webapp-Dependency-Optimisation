@@ -1,5 +1,6 @@
 import React from "react";
 import {Routes, Route, useNavigate} from 'react-router-dom';
+import {useState} from 'react';
 import './App.css';
 import Header from "./Header"; 
 import FileUploadButton from "./FileUploadButton";
@@ -9,22 +10,24 @@ import Button from "./Button";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
 import { Banner } from "./Banner";
-
+import { Context } from './ContextFile';
 
 function App() {
- 
+  const [optimisationResponse, setOptimisationResponse] = useState(null);
+
 return (
     
  <>
-  <Header />
- 
-  <Routes>
-          <Route path="/" element={<Banner />} /> 
-          <Route path="/optimiser" element={<Optimiser />} />
-         
-   </Routes>
+  <Context.Provider value={{ optimisationResponse, setOptimisationResponse }}>
+    <Header />
+  
+    <Routes>
+            <Route path="/" element={<Banner />} /> 
+            <Route path="/optimiser" element={<Optimiser />} />
+          
+    </Routes>
+   </Context.Provider>
    </>
 
 
