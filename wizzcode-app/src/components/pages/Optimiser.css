@@ -10,6 +10,16 @@
     background-color: #161b22;
 }
 
+/* Accordion Section */
+.accordion-item, .accordion-body, .accordion-header, .accordion-item button, .accordion-item button:not(.collapsed) {
+    background-color: #000000;
+    color:#fff;
+}
+
+.accordion-item{
+    border-color: #161b22 !important;
+}
+
 /* Code Display Section */
 .code-container{
     height: 100vh;

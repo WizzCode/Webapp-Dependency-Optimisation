@@ -5,7 +5,10 @@ import * as themes from "react-syntax-highlighter/dist/esm/styles/hljs";
 import CopyToClipboard from 'react-copy-to-clipboard';
 import { Row, Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
+import Accordion from 'react-bootstrap/Accordion';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import './Optimiser.css'
 
 function Optimiser() {
@@ -18,6 +21,20 @@ function Optimiser() {
     <Row className="main-container">
       <Col md={6}>
         <div className="optimisation-list-container rounded-4">
+          <Accordion className="accordion">
+            <Accordion.Item eventKey="0">
+              <Accordion.Header>Accordion Item #1</Accordion.Header>
+              <Accordion.Body>
+                Accordion body
+              </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="1">
+              <Accordion.Header>Accordion Item #2</Accordion.Header>
+              <Accordion.Body>
+                Accordion body
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
         </div>
       </Col>
 
