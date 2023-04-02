@@ -14,16 +14,18 @@ import './Optimiser.css'
 import { Context } from '../ContextFile';
 
 function Optimiser() {
-  const [text, setText] = useState('import com.wizzcode.server; \n\n@SpringBootApplication \nclass Application{ \npublic static void main(String args[]){');
+  // const [text, setText] = useState('import com.wizzcode.server; \n\n@SpringBootApplication \nclass Application{ \npublic static void main(String args[]){');
   const defaultLanguage = 'java'
   const defaultTheme = 'agate'
   const [theme, setTheme] = useState(defaultTheme)
   const [optimisations, setOptimisations] = useState(null);
-  const { optimisationResponse } = useContext(Context);
+  const [codeToDisplay, setCodeToDisplay] = useState("");
+  const { optimisationResponse, inputFileText } = useContext(Context);
 
   useEffect(() => {
     console.log(`Opt Resp updated`);
     setOptimisations(optimisationResponse);
+    setCodeToDisplay(inputFileText);
   }, [optimisationResponse]);
 
   const accordionItem = (key, item) => {
@@ -78,7 +80,7 @@ function Optimiser() {
                 <option key={i}>{theme}</option>
               ))}
             </select>
-            <CopyToClipboard text={text} onCopy={() => alert("Copied")} className="copy-btn">
+            <CopyToClipboard text={codeToDisplay} onCopy={() => alert("Copied")} className="copy-btn">
               <Button variant="dark">Copy to clipboard</Button>
             </CopyToClipboard>
           </div>
@@ -89,7 +91,7 @@ function Optimiser() {
             showInlineLineNumbers 
             className="syntax-highlighter"
           >
-            {text}
+            {codeToDisplay}
           </SyntaxHighlighter>
         </div>
       </Col>

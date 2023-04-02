@@ -14,6 +14,7 @@ class FileUploadButton extends Component {
         super(props);
         this.state = {
             file: null,
+            fileText: null,
         }
     }
 
@@ -26,15 +27,31 @@ class FileUploadButton extends Component {
         })
     }
 
+    resolveTextFromFile = async (file) => {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            let data;
+            reader.readAsText(file);
+            reader.onloadend = function () {
+                data = reader.result;
+                resolve(data);
+            };
+        });
+    }
    
     handleSubmitFile = () => {
 
         if (this.state.file !== null){
-
             let formData = new FormData();
             formData.append('codeInput', this.state.file);
-           
 
+            let promiseObj = this.resolveTextFromFile(this.state.file);
+            promiseObj.then((value) => {
+                this.setState({
+                    fileText:value,
+                });
+            })
+            
             axios.post(
                 this.custom_file_upload_url,
                 formData,
@@ -47,8 +64,8 @@ class FileUploadButton extends Component {
             )
             .then(res => {
                 console.log(`Success` + res.data);
-                console.log(typeof(res.data));
                 const result = JSON.parse(JSON.stringify(res.data));
+                this.context.setInputFileText(this.state.fileText);
                 this.context.setOptimisationResponse(result);
             })
             .catch(err => {
