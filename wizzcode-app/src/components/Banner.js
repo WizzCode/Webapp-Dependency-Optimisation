@@ -6,7 +6,7 @@ import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 import FileUploadButton from "./FileUploadButton";
 import Button from "./Button";
-
+import Button2 from "./Button2";
 export const Banner = () => {
   const [loopNum, setLoopNum] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -67,6 +67,9 @@ export const Banner = () => {
         </div>
         <div className="Card">
           <Button />
+        </div>
+        <div className="Card">
+          <Button2 />
         </div>
           </Col>
           <Col xs={12} md={6} xl={5}>

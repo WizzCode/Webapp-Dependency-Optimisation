@@ -5,9 +5,10 @@ import './App.css';
 import Header from "./Header"; 
 import FileUploadButton from "./FileUploadButton";
 import Optimiser from "./pages/Optimiser";
+import Dependency from "./pages/Dependency";
 import { Link } from "react-router-dom";
 import Button from "./Button";
-
+import Button2 from "./Button2";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Banner } from "./Banner";
@@ -26,6 +27,7 @@ return (
     <Routes>
             <Route path="/" element={<Banner />} /> 
             <Route path="/optimiser" element={<Optimiser />} />
+            <Route path="/dependency" element={<Dependency />} />
           
     </Routes>
    </Context.Provider>
