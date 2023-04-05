@@ -7,21 +7,29 @@ import Graph from 'react-graph-vis';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 function Dependency() { 
-  
+  const names = ["a","b","c"];
+  const links = [[true,false,true],
+  [false, false, true],
+  [false,false,false]];
+  const nodesGraph =[];
+  const edgesGraph =[];
+  for (let i = 0; i<names.length; i++) {
+    nodesGraph.push({id: i, label: `${names[i]}`}); // id is just the integer which will be used to
+    // identify the nodes and will not be displayed on the graph
+  }
+  for(let i=0;i<links.length;i++)
+  {
+  for(let j=0; j<links[i].length;j++)
+  {
+  if(links[i][j]==true)
+  {
+  edgesGraph.push({from: i, to: j});
+  }
+  }
+  }
     const [graph, setGraph] = useState({
-      nodes: [
-        { id: 1, label: 'Node 1' },
-        { id: 2, label: 'Node 2' },
-        { id: 3, label: 'Node 3' },
-        { id: 4, label: 'Node 4' },
-        { id: 5, label: 'Node 5' }
-      ],
-      edges: [
-        { from: 1, to: 2 },
-        { from: 1, to: 3 },
-        { from: 2, to: 4 },
-        { from: 2, to: 5 }
-      ]
+      nodes: nodesGraph,
+      edges: edgesGraph
     });
   
     const options = {
