@@ -10,7 +10,7 @@ function Dependency() {
   const names = ["a","b","c"];
   const links = [[true,false,true],
   [false, false, true],
-  [false,false,false]];
+  [true,false,false]];
   const nodesGraph =[];
   const edgesGraph =[];
   for (let i = 0; i<names.length; i++) {
