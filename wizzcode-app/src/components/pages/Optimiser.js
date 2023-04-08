@@ -6,7 +6,7 @@ import CopyToClipboard from 'react-copy-to-clipboard';
 import { Row, Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Accordion from 'react-bootstrap/Accordion';
-
+import FileUploadButton from "../FileUploadButton";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import './Optimiser.css'
@@ -68,19 +68,23 @@ function Optimiser() {
 
       <Col md={6}>
         <div className="code-container rounded-4">
-          <div className="inner-code-container-1">
+          <div classname = "inner-code-container-1 inner-code-1">
+            <FileUploadButton/>
+          </div>
+          <div className="inner-code-container-1 inner-code-2">
             <select
               id="select-theme"
               defaultValue={defaultTheme}
               name="themes"
               onChange={(e) => setTheme(e.target.value)}
-              className="form-select-sm bg-dark text-light"
+              className="form-select-sm bg-dark text-light div-buttons"
             >
               {Object.keys(themes).map((theme, i) => (
                 <option key={i}>{theme}</option>
               ))}
             </select>
-            <CopyToClipboard text={codeToDisplay} onCopy={() => alert("Copied")} className="copy-btn">
+            
+            <CopyToClipboard text={codeToDisplay} onCopy={() => alert("Copied")} className="copy-btn div-buttons">
               <Button variant="dark">Copy to clipboard</Button>
             </CopyToClipboard>
           </div>

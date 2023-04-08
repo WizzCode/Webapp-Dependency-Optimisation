@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
-
+import  { useState } from 'react';
 import { Context } from './ContextFile';
 
 class FileUploadButton extends Component {
@@ -40,6 +40,7 @@ class FileUploadButton extends Component {
     }
    
     handleSubmitFile = () => {
+        
 
         if (this.state.file !== null){
             let formData = new FormData();
@@ -85,7 +86,7 @@ class FileUploadButton extends Component {
                     type="file"
                     onChange={this.handleFile}
                 />
-                <label>Upload file</label>
+                {/* <label>Upload file</label> */}
                 <input class="uploadbutton" type="submit" onClick={this.handleSubmitFile} value="Upload"/>
                 
             </div>

@@ -63,7 +63,7 @@ export const Banner = () => {
               </div>}
             </TrackVisibility>
             <div className="Card">
-          <FileUploadButton />
+          {/* <FileUploadButton /> */}
         </div>
         <div className="Card">
           <Button />
