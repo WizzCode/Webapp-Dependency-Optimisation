@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect, useContext } from 'react'
 import { Row, Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
+import Accordion from 'react-bootstrap/Accordion';
 //import { Digraph } from 'react-digraph';
 import Graph from 'react-graph-vis';
 import 'bootstrap/dist/css/bootstrap.min.css';

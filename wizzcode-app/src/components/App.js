@@ -6,6 +6,7 @@ import Header from "./Header";
 import FileUploadButton from "./FileUploadButton";
 import Optimiser from "./pages/Optimiser";
 import Dependency from "./pages/Dependency";
+import DependencyFinder from "./pages/Dependencyfinder";
 import { Link } from "react-router-dom";
 import Button from "./Button";
 import Button2 from "./Button2";
@@ -27,7 +28,7 @@ return (
     <Routes>
             <Route path="/" element={<Banner />} /> 
             <Route path="/optimiser" element={<Optimiser />} />
-            <Route path="/dependency" element={<Dependency />} />
+            <Route path="/dependency" element={<DependencyFinder />} />
           
     </Routes>
    </Context.Provider>
