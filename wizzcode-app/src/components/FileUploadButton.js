@@ -135,7 +135,7 @@ class FileUploadButton extends Component {
                 />
                 {/* <label>Upload file</label> */}
                 <input class="uploadbutton" type="submit" onClick={this.handleSubmitFile} value="Upload"/>
-                {this.state.success ? <p style={{ color: "blue" }}>File uploaded successfully!</p> : null}
+                {this.state.success ? <p style={{ color: "#6082B6" }}>File uploaded successfully!</p> : null}
                 <Modal show={this.state.showModal} onHide={this.handleCloseModal}>
                 <Modal.Header closeButton>
                     {this.state.success ? <Modal.Title style={{ color: "black" }}>Success!</Modal.Title> : <Modal.Title style={{ color: "black" }}>Error!</Modal.Title>}

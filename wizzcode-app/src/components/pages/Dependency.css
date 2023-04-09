@@ -21,7 +21,7 @@
   }
 
   .legend-div{
-    width: 25%;
+    /* width: 25%; */
     border:1px solid white;
     height: 40%;
     margin-top: 15%;
@@ -30,6 +30,7 @@
   .graph-legend{
     display:flex;
     flex-direction: row;
+    height:fit-content;
   }
   
   .graph-container{

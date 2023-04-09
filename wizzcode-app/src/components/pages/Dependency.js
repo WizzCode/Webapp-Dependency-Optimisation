@@ -1,12 +1,13 @@
 import React from "react";
 import Graph from 'react-graph-vis';
+import { useState, useEffect} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
 const Legend = () => {
   const shapeOptions = [
-    { name: "Attribute", shape: "circle", color: "white"},
-    { name: "Overriding Super Class", shape: "box", color: "white" },
+    { name: "Attribute", shape: "box", color: "white"},
+    { name: "Overrides Super Class Method", shape: "circle", color: "white" },
   ];
 
   const colorOptions = [
@@ -90,6 +91,11 @@ const Legend = () => {
 
 function Dependency(nodesInfoJSON) { 
   const nodesInfo = nodesInfoJSON["nodesInfo"];
+  const [heightStr, setHeightStr] = useState('100%');
+
+  useEffect(() => {
+    setHeightStr("500")
+  }, []);
 
   //static input for testing purposes
   const dependencyInfoJson = {
@@ -183,7 +189,7 @@ function Dependency(nodesInfoJSON) {
     return {
       id: k + 1,
       label: item["name"],
-      value: 10,
+      // value: 10,
       level: l,
       borderColor: '#000000',
       borderWidth: borderwidthscheme[item["thread"]],
@@ -205,16 +211,17 @@ function Dependency(nodesInfoJSON) {
       hierarchical: {
         direction: 'UD',
         sortMethod: 'directed',
-        levelSeparation: 150,
-        nodeSpacing: 500,
+        // levelSeparation: 150,
+        // nodeSpacing: 500,
         avoidOverlap: true,
       },
     },
     edges: {
       color: 'white',
     },
-    height: '800px',
-    autoResize: true,
+    height: heightStr,
+    width: '100%',
+    // autoResize: true,
   };
 
 
