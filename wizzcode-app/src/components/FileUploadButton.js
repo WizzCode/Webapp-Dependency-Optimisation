@@ -8,7 +8,7 @@ class FileUploadButton extends Component {
     static contextType = Context;
 
     // API Endpoints
-    custom_file_upload_url = `http://127.0.0.1:8080/api/optimisation`;
+    base_url = `http://127.0.0.1:8080/api/`;
     
     //constructor(props) {
         //super(props);
@@ -22,6 +22,7 @@ class FileUploadButton extends Component {
         fileText: null,
         success: false, // define success as a class property
         showModal: false,
+        request_url: this.base_url,
     }
         
 
@@ -71,34 +72,52 @@ class FileUploadButton extends Component {
             });
         })
 
-        
-            
-            axios.post(
-                this.custom_file_upload_url,
-                formData,
-                {
-                    headers: {
-                        "Authorization": "YOUR_API_AUTHORIZATION_KEY_SHOULD_GOES_HERE_IF_HAVE",
-                        "Content-type": "multipart/form-data",
-                    },                    
-                }
-            )
-            .then(res => {
-                console.log(`Success` + res.data);
-                const result = JSON.parse(JSON.stringify(res.data));
-                this.context.setInputFileText(this.state.fileText);
-                this.context.setOptimisationResponse(result);
-                this.setState({
-                    success: true,
-                    showModal: true,
-                });
-            })
-            .catch(err => {
-                console.log(err);
-                this.setState({
-                    showModal: true,
-                });
-            })
+        let newUrl;
+        if(this.props.performFunction==="findDependency"){
+            newUrl = this.base_url + "dependency";
+        }
+        else if(this.props.performFunction==="optimise"){
+            newUrl = this.base_url + "optimisation";
+        }
+
+        this.setState({
+                request_url: newUrl,
+            },
+            () => {
+                axios.post(
+                    // this.custom_file_upload_url,
+                    this.state.request_url,
+                    formData,
+                    {
+                        headers: {
+                            "Authorization": "YOUR_API_AUTHORIZATION_KEY_SHOULD_GOES_HERE_IF_HAVE",
+                            "Content-type": "multipart/form-data",
+                        },
+                    }
+                )
+                .then(res => {
+                    console.log(`Success` + res.data);
+                    const result = JSON.parse(JSON.stringify(res.data));
+                    this.context.setInputFileText(this.state.fileText);
+                    if (this.props.performFunction === "findDependency") {
+
+                    }
+                    else if (this.props.performFunction === "optimise") {
+                        this.context.setOptimisationResponse(result);
+                    }
+                    this.setState({
+                        success: true,
+                        showModal: true,
+                    });
+                })
+                .catch(err => {
+                    console.log(err);
+                    this.setState({
+                        showModal: true,
+                    });
+                })
+            }
+        );            
         
         }
     
