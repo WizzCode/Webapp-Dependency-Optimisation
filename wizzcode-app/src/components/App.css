@@ -80,9 +80,14 @@ p.danger {
 }
 /************ Navbar Css ************/
 
+.navbar{
+  box-shadow: black;
+}
+
 .navbar-logo{
-  margin-top: 40px;
-  font-size: 30px;
+  margin: 1% 0;
+  margin-left: 4% !important;
+  font-size: 2em !important;
 }
 
 
@@ -183,8 +188,8 @@ p.danger {
 .uploadbutton {
   font-size: 14px;
   display: inline-block;
-  height: 36px;
-  min-width: 88px;
+  /* height: 36px; */
+  /* min-width: 88px; */
   padding: 6px 16px;
   line-height: 1.42857143;
   text-align: center;
@@ -199,8 +204,8 @@ p.danger {
   user-select: none;
   border: 0;
   border-radius: 2px;
-  background: rgba(103, 58, 183, 1);
+  background: #6082B6;
   color: #fff;
   outline: 0;
-  margin-left: 40%;
+  /* margin-left: 40%; */
 }

@@ -11,6 +11,7 @@ import * as themes from "react-syntax-highlighter/dist/esm/styles/hljs";
 import CopyToClipboard from 'react-copy-to-clipboard';
 import './Dependency.css'
 import './Optimiser.css'
+import './DependencyFinder.css'
 function DependencyFinder()
 {
     const defaultLanguage = 'java'
@@ -42,19 +43,18 @@ function DependencyFinder()
 
     return (
         <div>
-        <Row >
-            <div class ="container">
-            <h4>Dependency Graph</h4>
+            <h4 className="text-center mt-5 mb-5">Dependency Graph</h4>
+            <div id = "file-upload-div" className="d-flex justify-content-center">
+              <FileUploadButton/>
+            </div>
+
+            <div >
+            
             <Dependency></Dependency>
             </div>
 
-        </Row>
-
-        <Row classname="code-col">
-        <div className="code-container rounded-4 half-width">
-          <div classname = "inner-code-container-1 inner-code-1">
-            <FileUploadButton/>
-          </div>
+        <div className="code-container rounded-4">
+          
           <div className="inner-code-container-1 inner-code-2">
             <select
               id="select-theme"
@@ -82,7 +82,6 @@ function DependencyFinder()
             {codeToDisplay}
           </SyntaxHighlighter>
         </div>
-        </Row>
         </div>
     );
 }

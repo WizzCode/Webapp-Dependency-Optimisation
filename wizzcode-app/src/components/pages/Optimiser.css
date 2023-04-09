@@ -34,31 +34,14 @@
     display: flex;
     flex-direction: column;
 }
-
-.inner-code-container-1 {
-    /* margin: 2% 2%;
-    margin-right: 10px;
-    flex-basis: 5%; */
-    display: inline-block;
-    margin-right: 10px;
-}
-
-/* .div-buttons
-{
-    width: 20px;
-    height: 20px;
-} */
-.inner-code-1{
-  margin-bottom:10px;
-}
-.inner-code-2{
-    margin-top:10px;
+.inner-code-container-1{
+    margin: 2% 2%;
+    flex-basis: 5%;
 }
 #select-theme{
     margin:0;
     height: 100%;
     width: 20%;
-    
 }
 .copy-btn{
     margin-bottom: 0%;
