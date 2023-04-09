@@ -2,7 +2,7 @@
 
   .half-width
   {
-    width:50%;
+    /* width:50%; */
     margin: 10% auto 0;
   }
 
@@ -13,5 +13,10 @@
     padding: 20px;
     text-align: center;
  
+  }
+
+  #graph-div{
+    background-color: #161b22;
+    margin: 1%;
   }
   
