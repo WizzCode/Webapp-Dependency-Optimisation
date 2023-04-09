@@ -12,7 +12,7 @@ function Button() {
     return (
         <div>
           
-          <button style={{color: "red"}} onClick={navigateToOptimiser}>Optimisation Button</button>
+          <button class = "cardbutton" onClick={navigateToOptimiser}>View Optimisations</button>
         </div>
       );
 }
