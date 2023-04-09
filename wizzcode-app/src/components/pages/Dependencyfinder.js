@@ -12,34 +12,18 @@ import CopyToClipboard from 'react-copy-to-clipboard';
 import './Dependency.css'
 import './Optimiser.css'
 import './DependencyFinder.css'
-function DependencyFinder()
-{
-    const defaultLanguage = 'java'
+function DependencyFinder(){
+  const defaultLanguage = 'java'
   const defaultTheme = 'agate'
   const [theme, setTheme] = useState(defaultTheme)
-  const [optimisations, setOptimisations] = useState(null);
   const [codeToDisplay, setCodeToDisplay] = useState("");
-  const { optimisationResponse, inputFileText } = useContext(Context);
+  const { dependencyResponse, inputFileText } = useContext(Context);
+  const [nodesInfo, setNodesInfo] = useState(null);
 
   useEffect(() => {
-    console.log(`Opt Resp updated`);
-    setOptimisations(optimisationResponse);
     setCodeToDisplay(inputFileText);
-  }, [optimisationResponse]);
-
-  const accordionItem = (key, item) => {
-    return(
-      <>
-        <Accordion.Item eventKey={key}>
-          <Accordion.Header>{item.lineNo}</Accordion.Header>
-          <Accordion.Body>
-            <p>{item.justificationKey}</p>
-            <p>{item.snippet}</p>
-          </Accordion.Body>
-        </Accordion.Item>
-      </>
-    )
-  };
+    setNodesInfo(dependencyResponse);
+  }, [dependencyResponse]);
 
     return (
         <div>
@@ -49,8 +33,15 @@ function DependencyFinder()
             </div>
 
             <div >
-            
-            <Dependency></Dependency>
+              {
+                (nodesInfo !== null && nodesInfo !== undefined)
+                  ?
+                  <>
+                    <Dependency nodesInfo={nodesInfo}></Dependency>
+                  </>
+                  :
+                  <></>
+              }
             </div>
 
         <div className="code-container rounded-4">

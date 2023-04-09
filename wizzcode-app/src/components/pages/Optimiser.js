@@ -24,17 +24,18 @@ function Optimiser() {
   const [codeToDisplay, setCodeToDisplay] = useState("");
   const { optimisationResponse, inputFileText } = useContext(Context);
 
-  const myMap = new Map();
-  myMap.put("string_concat_loop","Avoid string concatenation in loop");
- myMap.put("method_call_loop","Avoid method calls inside loops");
- myMap.put("empty_if","Avoid if statements with no body");
- myMap.put("boolean_if_compare","Avoid using '==' operator while comparing boolean variable");
- myMap.put("primitive_constructor", "Avoid initializing primitive variables in constructorr");
- myMap.put("synch_loop","Avoid using synchronized statements inside loops");
-myMap.put("string_token","Avoid using string tokenizer method");
-myMap.put("new_string","Avoid initializing string with new Keyword.");
-myMap.put("charAt","Avoid using charAt method with strings");
-myMap.put("cascading_if", "Avoid multiple cascading if-else statements");
+  let myMap = new Map();
+  myMap.set("string_concat_loop", "Avoid string concatenation in loop");
+  myMap.set("method_call_loop", "Avoid method calls inside loops");
+  myMap.set("empty_if", "Avoid if statements with no body");
+  myMap.set("boolean_if_compare", "Avoid using '==' operator while comparing boolean variable");
+  myMap.set("primitive_constructor", "Avoid initializing primitive variables in constructorr");
+  myMap.set("synch_loop", "Avoid using synchronized statements inside loops");
+  myMap.set("string_token", "Avoid using string tokenizer method");
+  myMap.set("new_string", "Avoid initializing string with new Keyword.");
+  myMap.set("charAt", "Avoid using charAt method with strings");
+  myMap.set("cascading_if", "Avoid multiple cascading if-else statements");
+  
   useEffect(() => {
     console.log(`Opt Resp updated`);
     setOptimisations(optimisationResponse);

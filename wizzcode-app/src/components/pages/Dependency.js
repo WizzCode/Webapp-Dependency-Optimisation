@@ -3,7 +3,10 @@ import Graph from 'react-graph-vis';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
-function Dependency() { 
+function Dependency(nodesInfoJSON) { 
+  const nodesInfo = nodesInfoJSON["nodesInfo"];
+
+  //static input for testing purposes
   const dependencyInfoJson = {
     "primaryTypes": [
       "class",
@@ -15,90 +18,94 @@ function Dependency() {
       "variable",
     ],
     "nodesInfo": {
-      0:{
-        "name":"SampleProgram",
-        "level":1,
-        "primaryType":"class",
-        "overriding":"y",
-        "thread":"n",
-        "depArray":[0,1,1,1],
+      0: {
+        "name": "SampleProgram",
+        "level": 1,
+        "primaryType": "class",
+        "overriding": "y",
+        "thread": "n",
+        "depArray": [0, 1, 1, 1],
       },
-      1:{
-        "name":"A.f1()",
-        "level":2,
-        "primaryType":"publicMethod",
-        "overriding":"n",
-        "thread":"y",
-        "depArray":[0,0,1,0],
+      1: {
+        "name": "A.f1()",
+        "level": 2,
+        "primaryType": "publicMethod",
+        "overriding": "n",
+        "thread": "y",
+        "depArray": [0, 0, 1, 0],
       },
-      2:{
-        "name":"A.f1().abc",
-        "level":3,
-        "primaryType":"variable",
-        "overriding":"n",
-        "thread":"n",
-        "depArray":[0,0,0,0],
+      2: {
+        "name": "A.f1().abc",
+        "level": 3,
+        "primaryType": "variable",
+        "overriding": "n",
+        "thread": "n",
+        "depArray": [0, 0, 0, 0],
       },
-      3:{
-        "name":"A.f2()",
-        "level":2,
-        "primaryType":"publicMethod",
-        "overriding":"y",
-        "thread":"y",
-        "depArray":[0,1,1,0],
+      3: {
+        "name": "A.f2()",
+        "level": 2,
+        "primaryType": "publicMethod",
+        "overriding": "y",
+        "thread": "y",
+        "depArray": [0, 1, 1, 0],
       },
     }
   }
 
   const primaryTypes = dependencyInfoJson["primaryTypes"];
-  const nodesInfo = dependencyInfoJson["nodesInfo"];
+  // const nodesInfo = dependencyInfoJson["nodesInfo"];
   const noNodes = Object.keys(nodesInfo).length;
 
   const colors = ["#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#800080", "#FFA500", "#FFC0CB", "#40E0D0", "#E6E6FA", "#FF00FF"];
   const colorsForTypes = {};
-  for(let i=0;i<primaryTypes.length;i++){
-    colorsForTypes[primaryTypes[i]]=colors[i];
+  for (let i = 0; i < primaryTypes.length; i++) {
+    colorsForTypes[primaryTypes[i]] = colors[i];
   }
 
   const graphEdges = [];
-  for( let key in nodesInfo){
-    for (let i=0;i<noNodes;i++){
-      if(nodesInfo[key]["depArray"][i] === 1){
+  for (let key in nodesInfo) {
+    let depArray = JSON.parse(nodesInfo[key]["depArray"]);
+    let k = parseInt(key);
+    for (let i = 0; i < noNodes; i++) {
+      if (depArray[i] === 1) {
         graphEdges.push({
           to: i + 1,
-          from: parseInt(key) + 1,
+          from: k + 1,
         });
       }
     }
   }
 
   const shapeScheme = (item) => {
-    if(item["overriding"]==="y"){
-      return "box"
-    }
-    else{
+    if (item["overriding"] === "y") {
       return "circle"
+    }
+    else {
+      return "box"
     }
   }
 
-  const borderwidthscheme ={
-    "y":5,
-    "n":0
+  const borderwidthscheme = {
+    "y": 5,
+    "n": 0
   };
 
   const graphNodes = Object.entries(nodesInfo).map(([key, item]) => {
+    let k = parseInt(key);
+    let l = parseInt(item["level"])
     return {
-      id: parseInt(key) + 1,
+      id: k + 1,
       label: item["name"],
       value: 10,
-      level: item["level"],
+      level: l,
       borderColor: '#000000',
       borderWidth: borderwidthscheme[item["thread"]],
-      color : {
-        background:colorsForTypes[item["primaryType"]],
+      color: {
+        background: colorsForTypes[item["primaryType"]],
         border: "#686868",
       },
-      shape : shapeScheme(item),   
+      shape: shapeScheme(item),
     };
   });
 
@@ -113,23 +120,31 @@ function Dependency() {
         direction: 'UD',
         sortMethod: 'directed',
         levelSeparation: 150,
-        nodeSpacing: 350,
+        nodeSpacing: 500,
         avoidOverlap: true,
       },
     },
     edges: {
       color: 'white',
     },
-    height:'500px',
+    height: '800px',
     autoResize: true,
   };
 
   return (
     <div id="graph-div" className="rounded-4">
-      <Graph
-      graph={graph}
-      options={options}
-    />
+      {
+        (nodesInfo !== null)
+          ?
+          <>
+            <Graph
+              graph={graph}
+              options={options}
+            />
+          </>
+          :
+          <p className="p-3">Please upload input code to view dependency graph</p>
+      }
     </div>
   );
 }

@@ -18,11 +18,12 @@ import { Context } from './ContextFile';
 function App() {
   const [optimisationResponse, setOptimisationResponse] = useState(null);
   const [inputFileText, setInputFileText] = useState(null);
+  const [dependencyResponse, setDependencyResponse] = useState(null);
 
 return (
     
  <>
-  <Context.Provider value={{ optimisationResponse, setOptimisationResponse, inputFileText, setInputFileText }}>
+  <Context.Provider value={{ optimisationResponse, setOptimisationResponse, inputFileText, setInputFileText, dependencyResponse, setDependencyResponse }}>
     <Header />
   
     <Routes>

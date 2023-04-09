@@ -7,4 +7,6 @@ export const Context = React.createContext({
     setOptimisationResponse: () => {},
     inputFileText: null,
     setInputFileText: () => {},
+    dependencyResponse: null,
+    setDependencyResponse: () => {}, 
 });

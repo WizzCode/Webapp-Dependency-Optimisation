@@ -100,7 +100,7 @@ class FileUploadButton extends Component {
                     const result = JSON.parse(JSON.stringify(res.data));
                     this.context.setInputFileText(this.state.fileText);
                     if (this.props.performFunction === "findDependency") {
-
+                        this.context.setDependencyResponse(result);
                     }
                     else if (this.props.performFunction === "optimise") {
                         this.context.setOptimisationResponse(result);
