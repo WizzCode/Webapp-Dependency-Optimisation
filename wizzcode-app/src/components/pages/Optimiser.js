@@ -9,8 +9,9 @@ import Accordion from 'react-bootstrap/Accordion';
 import FileUploadButton from "../FileUploadButton";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
-import './Optimiser.css'
+
 import OptimiserInfo from "./OptimiserInfo";
+import './Optimiser.css'
 
 import { Context } from '../ContextFile';
 
@@ -45,8 +46,14 @@ function Optimiser() {
 
   return (
     <div>
-
-    <OptimiserInfo/>
+      <div className="general-container">
+        <div className="upload-file">
+          <FileUploadButton />
+        </div>
+        <div className="optimiser-info">
+          <OptimiserInfo />
+        </div>
+      </div>
     <Row className="main-container">
       <Col md={6}>
         <div className="optimisation-list-container rounded-4">
@@ -72,9 +79,6 @@ function Optimiser() {
 
       <Col md={6}>
         <div className="code-container rounded-4">
-          <div classname = "inner-code-container-1 inner-code-1">
-            <FileUploadButton/>
-          </div>
           <div className="inner-code-container-1 inner-code-2">
             <select
               id="select-theme"

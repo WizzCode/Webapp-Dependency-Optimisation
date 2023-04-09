@@ -2,6 +2,18 @@
     padding: 0 1.5%;
     margin-bottom: 5%;
 }
+.general-container{
+    display: flex;
+    flex-direction: row;
+    margin: 2% 3% 0% 3%;
+}
+.upload-file{
+    flex-basis: 80%;
+}
+.optimiser-info{
+    flex-basis: 20%;
+    margin-right:5%;
+}
 
 /* Optimisation Section */
 .optimisation-list-container{

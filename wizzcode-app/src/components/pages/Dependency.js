@@ -96,6 +96,7 @@ function Dependency() {
       borderWidth: borderwidthscheme[item["thread"]],
       color : {
         background:colorsForTypes[item["primaryType"]],
+        border: "#686868",
       },
       shape : shapeScheme(item),   
     };
