@@ -10,6 +10,7 @@ import FileUploadButton from "../FileUploadButton";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import './Optimiser.css'
+import OptimiserInfo from "./OptimiserInfo";
 
 import { Context } from '../ContextFile';
 
@@ -43,6 +44,9 @@ function Optimiser() {
   };
 
   return (
+    <div>
+
+    <OptimiserInfo/>
     <Row className="main-container">
       <Col md={6}>
         <div className="optimisation-list-container rounded-4">
@@ -100,6 +104,7 @@ function Optimiser() {
         </div>
       </Col>
     </Row>
+    </div>
   );
 }
 
