@@ -13,7 +13,7 @@ export const Banner = () => {
   const [text, setText] = useState('');
   const [delta, setDelta] = useState(300 - Math.random() * 100);
   const [index, setIndex] = useState(1);
-  const toRotate = [ "Optimisation", "Dependency Graph", "Code Analysis" ];
+  const toRotate = ["Code Analysis","Optimisation", "Dependency Graph" ];
   const period = 2000;
 
   useEffect(() => {
@@ -51,26 +51,21 @@ export const Banner = () => {
 
   return (
     <section className="banner" id="home">
-      <Container class="w-25">
-        <Row className="aligh-items-center">
+      <Container >
+        <Row className="align-items-center">
           <Col xs={12} md={6} xl={7}>
             <TrackVisibility>
               {({ isVisible }) =>
               <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
                 <span className="tagline">Let's Start Analysing </span>
-                <h1> <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Optimisation", "Dependency Graph", "Code Analysis" ]'><span className="wrap">{text}</span></span></h1>
+                <h1> <span className="txt-rotate" dataPeriod="1000" data-rotate='["Code Analysis","Optimisation", "Dependency Graph"]'><span className="wrap">{text}</span></span></h1>
              
               </div>}
             </TrackVisibility>
-            <div className="Card">
-          {/* <FileUploadButton /> */}
-        </div>
-        <div className="Card">
-          <Button />
-        </div>
-        <div className="Card">
-          <Button2 />
-        </div>
+            <div class ="d-flex justify-content-center">
+            <Button /> 
+            <Button2 /> 
+            </div>
           </Col>
           <Col xs={12} md={6} xl={5}>
             <TrackVisibility>

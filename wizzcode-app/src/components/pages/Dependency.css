@@ -19,4 +19,23 @@
     background-color: #161b22;
     margin: 4%;
   }
+
+  .legend-div{
+    width: 25%;
+    border:1px solid white;
+    height: 40%;
+    margin-top: 15%;
+  }
+
+  .graph-legend{
+    display:flex;
+    flex-direction: row;
+  }
   
+  .graph-container{
+    flex-basis: 80%;
+  }
+
+  .legend-container{
+    flex-basis: 20%;
+  }

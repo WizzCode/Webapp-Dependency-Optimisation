@@ -3,6 +3,91 @@ import Graph from 'react-graph-vis';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
+const Legend = () => {
+  const shapeOptions = [
+    { name: "Attribute", shape: "circle", color: "white"},
+    { name: "Overriding Super Class", shape: "box", color: "white" },
+  ];
+
+  const colorOptions = [
+    { name: "Class Variable", shape:"square", color: "#AFE1AF" },
+    { name: "Private Method", shape: "square", color: "#FFFF8F" },
+    { name: "Public Method", shape: "square", color: "#CBC3E3" },
+    { name: "Protected Method", shape: "square", color: "#F88379" },
+    { name: "Default Method", shape: "square", color: "#F28C28" },
+    { name: "Variable", shape: "square", color: "#6495ED" },
+  ];
+
+  const threadOptions = [
+    { name: "Thread", shape: "squre", color: "#686868"},
+  ];
+
+  return (
+    <div class="legend-div bg-dark">
+    <div>
+      Shapes
+      {shapeOptions.map((option) => (
+        <div key={option.shape}>
+          <span
+            style={{
+              display: "inline-block",
+              width: "16px",
+              height: "16px",
+              backgroundColor: option.color,
+              marginRight: "4px",
+              borderRadius: option.shape === "circle" ? "50%" : "",
+              border: `2px solid ${option.color}`,
+            }}
+          ></span>
+          {option.name}
+        </div>
+      ))}
+    
+    </div>
+    <div>
+    <div>
+      Colors
+      {colorOptions.map((option) => (
+        <div key={option.shape}>
+          <span
+            style={{
+              display: "inline-block",
+              width: "20px",
+              height: "5px",
+              backgroundColor: option.color,
+              marginRight: "4px",
+              borderRadius: option.shape === "circle" ? "50%" : "",
+              border: `2px solid ${option.color}`,
+            }}
+          ></span>
+          {option.name}
+        </div>
+      ))}
+    </div>
+    </div>
+    <div>
+      Outline
+      {threadOptions.map((option) => (
+        <div key={option.shape}>
+          <span
+            style={{
+              display: "inline-block",
+              width: "20px",
+              height: "5px",
+              backgroundColor: option.color,
+              marginRight: "4px",
+              borderRadius: option.shape === "circle" ? "50%" : "",
+              border: `2px solid ${option.color}`,
+            }}
+          ></span>
+          {option.name}
+        </div>
+      ))}
+    </div>
+    </div>
+  );
+};
+
 function Dependency() { 
   const dependencyInfoJson = {
     "primaryTypes": [
@@ -54,7 +139,8 @@ function Dependency() {
   const nodesInfo = dependencyInfoJson["nodesInfo"];
   const noNodes = Object.keys(nodesInfo).length;
 
-  const colors = ["#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#800080", "#FFA500", "#FFC0CB", "#40E0D0", "#E6E6FA", "#FF00FF"];
+  
+  const colors = ["#AFE1AF", "#FFFF8F", "#CBC3E3", "#F88379", "#F28C28", "#6495ED"];
   const colorsForTypes = {};
   for(let i=0;i<primaryTypes.length;i++){
     colorsForTypes[primaryTypes[i]]=colors[i];
@@ -124,14 +210,14 @@ function Dependency() {
     autoResize: true,
   };
 
+
   return (
-    <div id="graph-div" className="rounded-4">
-      <Graph
-      graph={graph}
-      options={options}
-    />
+    <div  id="graph-div" className="rounded-4 graph-legend">
+      <Graph className="graph-container" graph={graph} options={options} />
+      <Legend className="legend-container"/>
     </div>
   );
+  
 }
   
 export default Dependency;

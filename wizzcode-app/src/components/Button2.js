@@ -12,7 +12,7 @@ function Button2() {
     return (
         <div>
           
-          <button style={{color: "red"}} onClick={navigateToDependency}>Dependency Graph Button</button>
+          <button class = "cardbutton" onClick={navigateToDependency}>Generate Dependency Graph</button>
         </div>
       );
 }
