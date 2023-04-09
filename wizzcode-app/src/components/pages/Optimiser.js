@@ -48,7 +48,7 @@ function Optimiser() {
     <div>
       <div className="general-container">
         <div className="upload-file">
-          <FileUploadButton />
+          <FileUploadButton performFunction="optimise"/>
         </div>
         <div className="optimiser-info">
           <OptimiserInfo />

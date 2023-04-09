@@ -45,7 +45,7 @@ function DependencyFinder()
         <div>
             <h4 className="text-center mt-5 mb-5">Dependency Graph</h4>
             <div id = "file-upload-div" className="d-flex justify-content-center">
-              <FileUploadButton/>
+              <FileUploadButton performFunction="findDependency"/>
             </div>
 
             <div >
