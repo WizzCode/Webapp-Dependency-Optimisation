@@ -22,7 +22,7 @@ public class CodeInputController {
     }
 
     @RequestMapping(value = "dependency", method = { RequestMethod.GET, RequestMethod.POST })
-    public int[][] dependency(@RequestBody MultipartFile codeInput) throws Exception{
+    public String dependency(@RequestBody MultipartFile codeInput) throws Exception{
         return dependencyService.findOutput(codeInput);
     }
 

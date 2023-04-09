@@ -29,8 +29,8 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.yourorganization</groupId>
-			<artifactId>javaparser-maven-sample</artifactId>
+			<groupId>com.wizzcode</groupId>
+			<artifactId>wizzcode</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
 
@@ -67,9 +67,9 @@
 							<goal>install-file</goal>
 						</goals>
 						<configuration>
-							<file>${project.basedir}/../javaparser-maven-sample.jar</file>
-							<groupId>com.yourorganization</groupId>
-							<artifactId>javaparser-maven-sample</artifactId>
+							<file>${project.basedir}/../wizzcode-1.0-SNAPSHOT.jar</file>
+							<groupId>com.wizzcode</groupId>
+							<artifactId>wizzcode</artifactId>
 							<version>1.0-SNAPSHOT</version>
 							<packaging>jar</packaging>
 						</configuration>

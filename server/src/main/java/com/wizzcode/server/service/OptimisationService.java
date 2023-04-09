@@ -2,7 +2,7 @@ package com.wizzcode.server.service;
 
 import com.google.gson.*;
 import com.wizzcode.server.util.ApplicationUtils;
-import com.yourorganization.maven_sample.Optimiser;
+import com.wizzcode.wizzcode.Optimisation.Optimiser;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
