@@ -17,13 +17,14 @@ import { Context } from './ContextFile';
 
 function App() {
   const [optimisationResponse, setOptimisationResponse] = useState(null);
-  const [inputFileText, setInputFileText] = useState(null);
+  const [optimisationInputText, setOptimisationInputText] = useState(null);
   const [dependencyResponse, setDependencyResponse] = useState(null);
+  const [dependencyInputText, setDependencyInputText] = useState(null);
 
 return (
     
  <>
-  <Context.Provider value={{ optimisationResponse, setOptimisationResponse, inputFileText, setInputFileText, dependencyResponse, setDependencyResponse }}>
+  <Context.Provider value={{optimisationInputText, setOptimisationInputText, optimisationResponse, setOptimisationResponse, dependencyInputText, setDependencyInputText, dependencyResponse, setDependencyResponse }}>
     <Header />
   
     <Routes>

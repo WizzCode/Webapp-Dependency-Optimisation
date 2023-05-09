@@ -17,11 +17,11 @@ function DependencyFinder(){
   const defaultTheme = 'agate'
   const [theme, setTheme] = useState(defaultTheme)
   const [codeToDisplay, setCodeToDisplay] = useState("");
-  const { dependencyResponse, inputFileText } = useContext(Context);
+  const { dependencyResponse, dependencyInputText } = useContext(Context);
   const [nodesInfo, setNodesInfo] = useState(null);
 
   useEffect(() => {
-    setCodeToDisplay(inputFileText);
+    setCodeToDisplay(dependencyInputText);
     setNodesInfo(dependencyResponse);
   }, [dependencyResponse]);
 

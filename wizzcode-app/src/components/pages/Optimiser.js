@@ -22,7 +22,7 @@ function Optimiser() {
   const [theme, setTheme] = useState(defaultTheme)
   const [optimisations, setOptimisations] = useState(null);
   const [codeToDisplay, setCodeToDisplay] = useState("");
-  const { optimisationResponse, inputFileText } = useContext(Context);
+  const { optimisationResponse, optimisationInputText } = useContext(Context);
 
   let myMap = new Map();
   myMap.set("string_concat_loop", "Avoid string concatenation in loop");
@@ -39,7 +39,7 @@ function Optimiser() {
   useEffect(() => {
     console.log(`Opt Resp updated`);
     setOptimisations(optimisationResponse);
-    setCodeToDisplay(inputFileText);
+    setCodeToDisplay(optimisationInputText);
   }, [optimisationResponse]);
 
   const accordionItem = (key, item) => {
