@@ -41,11 +41,27 @@ public class DependencyService {
         JsonObject jsonObject = new JsonObject();
         for (Map.Entry<Integer, Map<String,String>> node : nodes.entrySet()) {
             JsonObject tempNodeObj = new JsonObject();
+            String displayName="";
             for(Map.Entry<String, String> nodeInfo: node.getValue().entrySet()){
                 tempNodeObj.addProperty(nodeInfo.getKey(), nodeInfo.getValue());
+                if(nodeInfo.getKey()=="name"){
+                    String qualifiedName = nodeInfo.getValue();
+
+                    //remove all content between parentheses
+                    qualifiedName = qualifiedName.replaceAll("\\([^()]*\\)", "()");
+                    //obtain the string after last appearance of dot operator
+                    int lastDotIndex = qualifiedName.lastIndexOf(".");
+                    if (lastDotIndex >= 0) {
+                        displayName = qualifiedName.substring(lastDotIndex + 1);
+                    }
+                    else{
+                        displayName = qualifiedName;
+                    }
+                }
             }
             int id = node.getKey();
             tempNodeObj.addProperty("depArray", Arrays.toString(depMap.get(id)));
+            tempNodeObj.addProperty("displayName", displayName);
             jsonObject.add(Integer.toString(node.getKey()), tempNodeObj);
         }
 

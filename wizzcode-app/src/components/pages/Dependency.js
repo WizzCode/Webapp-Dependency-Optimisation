@@ -188,8 +188,9 @@ function Dependency(nodesInfoJSON) {
     let l = parseInt(item["level"])
     return {
       id: k + 1,
-      label: item["name"],
+      label: item["displayName"],
       // value: 10,
+      title: item["name"],
       level: l,
       borderColor: '#000000',
       borderWidth: borderwidthscheme[item["thread"]],
@@ -222,8 +223,20 @@ function Dependency(nodesInfoJSON) {
     height: heightStr,
     width: '100%',
     // autoResize: true,
+    interaction:{
+      hover:true,
+      zoomSpeed: 0.4,
+      tooltipDelay: 100,
+    }
   };
 
+  const events = {
+    selectNode: function(event) {
+      let id = event.nodes[0]
+      let key = parseInt(id)-1
+      console.log(graph.nodes[key])
+    },
+  };
 
   return (
     <div id="graph-div" className="rounded-4 graph-legend">
@@ -235,6 +248,7 @@ function Dependency(nodesInfoJSON) {
               graph={graph}
               options={options}
               className="graph-container"
+              events={events}
             />
             <Legend className="legend-container"/>
           </>

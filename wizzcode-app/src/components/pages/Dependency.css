@@ -40,3 +40,11 @@
   .legend-container{
     flex-basis: 20%;
   }
+
+/* for tooltip on hover */
+  .vis-network {
+    overflow: visible;
+  }
+  .vis-tooltip {
+    position: absolute;
+  }
