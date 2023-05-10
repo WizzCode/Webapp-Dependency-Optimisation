@@ -15,9 +15,13 @@
  
   }
 
-  #graph-div{
+  #graph-container{
+    margin: 4% !important;
     background-color: #161b22;
-    margin: 4%;
+  }
+
+  .nav-link, .nav-link:hover{
+    color: #fff;
   }
 
   .legend-div{
@@ -33,7 +37,7 @@
     height:fit-content;
   }
   
-  .graph-container{
+  .graph-div{
     flex-basis: 80%;
   }
 

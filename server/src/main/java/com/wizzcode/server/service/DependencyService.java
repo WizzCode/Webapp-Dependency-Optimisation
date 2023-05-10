@@ -35,6 +35,8 @@ public class DependencyService {
         Map<Integer, Map<String, String>> nodes = dependencyObj.getNodes();
         //obtain the dependency hashmap
         Map<Integer, int[]> depMap = dependencyObj.getDepArray();
+        //obtain the transitive dependency wrt variables hashmap
+        Map<Integer, int[]> transDepWrtVariablesMap = dependencyObj.getTransDepWrtVariables();
 
         //combine and convert to JSON
         Gson gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().create();
@@ -61,6 +63,7 @@ public class DependencyService {
             }
             int id = node.getKey();
             tempNodeObj.addProperty("depArray", Arrays.toString(depMap.get(id)));
+            tempNodeObj.addProperty("transDepWrtVariablesArray", Arrays.toString(transDepWrtVariablesMap.get(id)));
             tempNodeObj.addProperty("displayName", displayName);
             jsonObject.add(Integer.toString(node.getKey()), tempNodeObj);
         }

@@ -1,6 +1,10 @@
 import React from "react";
 import Graph from 'react-graph-vis';
 import { useState, useEffect} from 'react'
+
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
@@ -155,20 +159,27 @@ function Dependency(nodesInfoJSON) {
     colorsForTypes[primaryTypes[i]] = colors[i];
   }
 
-  const graphEdges = [];
-  for (let key in nodesInfo) {
-    let depArray = JSON.parse(nodesInfo[key]["depArray"]);
-    let k = parseInt(key);
-    for (let i = 0; i < noNodes; i++) {
-      if (depArray[i] === 1) {
-        graphEdges.push({
-          to: i + 1,
-          from: k + 1,
-        });
+  const createGraphEdges = (jsonKey) => {
+    const edges = [];
+    for (let key in nodesInfo) {
+      let array = JSON.parse(nodesInfo[key][jsonKey]);
+      let k = parseInt(key);
+      for (let i = 0; i < noNodes; i++) {
+        if (array[i] === 1) {
+          edges.push({
+            to: i + 1,
+            from: k + 1,
+          });
+        }
       }
     }
-  }
+    return edges
+  } 
 
+  const graphEdges = createGraphEdges("depArray");
+  //for top level graph which does not display variables, the trans dep wrt to variables must be taken
+  const graphEdgesTopLevel = createGraphEdges("transDepWrtVariablesArray"); 
+  
   const shapeScheme = (item) => {
     if (item["overriding"] === "y") {
       return "circle"
@@ -202,10 +213,36 @@ function Dependency(nodesInfoJSON) {
     };
   });
 
+  const hideNode = (item) => {
+    if(item["primaryType"] === "variable"){
+      return true
+    }
+    else{
+      return false
+    }
+  }
+
+  //for top level graph, hide the variable nodes
+  const graphNodesTopLevel = Object.entries(nodesInfo).map(([key, item]) => {
+    let k = parseInt(key);
+    let node = graphNodes[k];
+    // node["hidden"]=hideNode(item);
+    let hidden = {"hidden": hideNode(item)};
+    return {
+      ...node,
+      ...hidden
+    };
+  });
+
   const graph = {
     nodes: graphNodes,
     edges: graphEdges,
   };
+
+  const graphTopLevel = {
+    nodes: graphNodesTopLevel,
+    edges: graphEdgesTopLevel,
+  }
 
   const options = {
     layout: {
@@ -234,27 +271,52 @@ function Dependency(nodesInfoJSON) {
     selectNode: function(event) {
       let id = event.nodes[0]
       let key = parseInt(id)-1
-      console.log(graph.nodes[key])
+      // console.log(graph.nodes[key])
     },
   };
 
   return (
-    <div id="graph-div" className="rounded-4 graph-legend">
-      {
-        (nodesInfo !== null)
-          ?
-          <>
-            <Graph
-              graph={graph}
-              options={options}
-              className="graph-container"
-              events={events}
-            />
-            <Legend className="legend-container"/>
-          </>
-          :
-          <p className="p-3">Please upload input code to view dependency graph</p>
-      }
+    <div id="graph-container" className="rounded-4">
+      <Tabs defaultActiveKey="graphComplete" className="text-light">
+        <Tab eventKey="graphComplete" title="Complete Graph">
+          <div className="graph-legend">
+            {
+              (nodesInfo !== null)
+                ?
+                <>
+                  <Graph
+                    graph={graph}
+                    options={options}
+                    className="graph-div"
+                    events={events}
+                  />
+                  <Legend className="legend-container"/>
+                </>
+                :
+                <p className="p-3">Please upload input code to view dependency graph</p>
+            }
+          </div>
+        </Tab>
+        <Tab eventKey="graphTopLevel" title="Top Level Graph">
+          <div className="graph-legend">
+            {
+              (nodesInfo !== null)
+                ?
+                <>
+                  <Graph
+                    graph={graphTopLevel}
+                    options={options}
+                    className="graph-div"
+                    events={events}
+                  />
+                  <Legend className="legend-container rounded-4"/>
+                </>
+                :
+                <p className="p-3">Please upload input code to view dependency graph</p>
+            }
+          </div>
+        </Tab>
+      </Tabs>
     </div>
   );
   
